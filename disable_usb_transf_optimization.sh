@@ -22,8 +22,11 @@ fi
 # 3. Importante: Restablecer valores en memoria RAM ahora mismo
 # Al poner dirty_bytes en 0, el kernel vuelve a usar dirty_ratio (el comportamiento por defecto)
 echo "🔄 Reseteando Kernel a valores por defecto..."
-sysctl vm.dirty_bytes=0
-sysctl vm.dirty_background_bytes=0
+# Primero el background ratio (generalmente 10%)
+sysctl vm.dirty_background_ratio=10
+
+# Luego el ratio absoluto (generalmente 20%)
+sysctl vm.dirty_ratio=20
 
 # Recargamos todo el sistema para asegurar
 sysctl --system > /dev/null 2>&1
