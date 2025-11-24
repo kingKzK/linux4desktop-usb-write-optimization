@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # 1. Verificación de Superusuario (Sudo)
-if [ "$EUID" -ne 0 ]; then
+if [ "$(id -u)" -ne 0 ]; then
   echo "❌ Error: Por favor ejecuta este script con sudo."
-  echo "   Uso: sudo sh ./usb_transf_optimization.sh"
+  echo "   Uso: sudo ./usb_transf_optimization.sh"
   exit 1
 fi
 
